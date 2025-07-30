@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Audit - Issac's Home Inventory</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .audit-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        #scanned-items-container { background: var(--surface-color); padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        #scanned-items-table { width: 100%; }
+        #scanned-items-table th, #scanned-items-table td { padding: 0.5rem; }
+        .action-buttons { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        @media (max-width: 900px) { .audit-layout { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">Issac's Home Inventory</a>
+        <nav class="main-nav">
+            <a href="/">Dashboard</a><a href="/add">Add</a><a href="/find">Find</a><a href="/all">All</a>
+            <a href="/scan">Scan</a><a href="/audit" class="active">Audit</a><a href="/warranty">Warranty</a><a href="/trash">Trash</a>
+        </nav>
+        <button class="nav-toggle" aria-label="toggle navigation">☰</button>
+    </header>
+
+    <main>
+        <div class="page-header"><h1>Inventory Audit</h1></div>
+        <div class="audit-layout">
+            <div class="content-container">
+                <h3>Scan Items</h3>
+                <p>Use the camera to scan the QR code of each item you want to audit.</p>
+                <div id="reader" style="width:100%; border-radius: 8px; overflow: hidden;"></div>
+                <div id="scan-status" style="text-align:center; margin-top:1rem;"></div>
+            </div>
+            <div id="scanned-items-container">
+                <h3>Scanned Items (<span id="item-count">0</span>)</h3>
+                <div class="table-container">
+                    <table id="scanned-items-table">
+                        <thead><tr><th><input type="checkbox" id="select-all-chk"></th><th>Code</th><th>Name</th><th>Status</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="action-buttons">
+                    <button id="print-btn" class="button button-secondary">🖨️ Print List</button>
+                    <button id="damage-btn" class="button" style="background-color: var(--warning-color);">⚠️ Mark Damaged</button>
+                    <button id="delete-btn" class="button button-danger">🗑️ Delete Selected</button>
+                    <button id="clear-btn" class="button button-secondary">Clear List</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <audio id="successSound" src="https://www.soundjay.com/buttons/beep-07a.mp3" preload="auto"></audio>
+    <audio id="errorSound" src="https://www.soundjay.com/buttons/beep-03.mp3" preload="auto"></audio>
+
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/audit.js"></script>
+</body>
+</html>

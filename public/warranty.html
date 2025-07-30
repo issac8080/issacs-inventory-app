@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warranty Watch - Issac's Home Inventory</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">Issac's Home Inventory</a>
+        <nav class="main-nav">
+            <a href="/">Dashboard</a>
+            <a href="/add">Add</a>
+            <a href="/find">Find</a>
+            <a href="/all">All</a>
+            <a href="/scan">Scan</a>
+            <a href="/audit">Audit</a>
+            <a href="/warranty" class="active">Warranty</a>
+            <a href="/trash">Trash</a>
+        </nav>
+        <button class="nav-toggle" aria-label="toggle navigation">☰</button>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1>⚠️ Warranty Watch</h1>
+            <p style="color: var(--secondary-color);">Showing products with warranties expiring in the next 30 days.</p>
+        </div>
+        <div class="content-container" id="warranty-items-result">
+            <p>Loading items...</p>
+        </div>
+    </main>
+    
+    <script src="/js/main.js"></script>
+    <script src="/js/warranty.js"></script>
+</body>
+</html>

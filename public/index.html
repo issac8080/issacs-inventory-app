@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Issac's Home Inventory</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">Issac's Home Inventory</a>
+        <nav class="main-nav">
+            <a href="/" class="active">Dashboard</a><a href="/add">Add</a><a href="/find">Find</a><a href="/all">All</a><a href="/scan">Scan</a><a href="/audit">Audit</a><a href="/warranty">Warranty</a><a href="/trash">Trash</a>
+        </nav>
+        <button class="nav-toggle" aria-label="toggle navigation">☰</button>
+    </header>
+    <main>
+        <section class="content-container" style="margin-bottom: 2rem;">
+            <h2>Inventory Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card"><h4>Total Items</h4><p id="stats-total-items">...</p></div>
+                <div class="stat-card"><h4>Expiring Soon</h4><p id="stats-expiring-soon">...</p></div>
+                <div class="stat-card"><h4>In Trash</h4><p id="stats-trash-items">...</p></div>
+            </div>
+        </section>
+        <div class="dashboard-grid">
+            <a href="/add" class="dashboard-card"><h2>➕ Add New Product</h2><p>Catalog a new item and set its warranty details.</p></a>
+            <a href="/find" class="dashboard-card"><h2>🔍 Find a Product</h2><p>Quickly search for any item by its unique code.</p></a>
+            <a href="/all" class="dashboard-card"><h2>📋 View All Products</h2><p>Browse, edit, and manage your complete inventory list.</p></a>
+            <a href="/warranty" class="dashboard-card"><h2>⚠️ Warranty Watch</h2><p>See items with warranties expiring in the next 30 days.</p></a>
+            <a href="/audit" class="dashboard-card"><h2>✔️ Inventory Audit</h2><p>Scan items to perform a physical inventory check.</p></a>
+            <a href="/trash" class="dashboard-card"><h2>🗑️ Recently Deleted</h2><p>View and restore items that you have recently deleted.</p></a>
+        </div>
+    </main>
+    <script src="/js/main.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

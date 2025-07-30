@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Product Stickers</title>
+    <link rel="stylesheet" href="/css/print.css">
+</head>
+<body>
+    <div class="print-controls">
+        <h1>Print Preview</h1>
+        <p>Your stickers are ready. Use your browser's print dialog to print them. For best results, ensure "Margins" are set to "Default" and "Scale" is 100%.</p>
+        <button onclick="window.print()" class="button">Print Now</button>
+        <a href="/all" class="button button-secondary">Go Back</a>
+    </div>
+    <div id="sticker-sheet-container">
+        </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="/js/print-stickers.js"></script>
+</body>
+</html>

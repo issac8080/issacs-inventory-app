@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - Issac's Home Inventory</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">Issac's Home Inventory</a>
+        <nav class="main-nav">
+            <a href="/">Dashboard</a><a href="/add">Add</a>
+            <a href="/find">Find</a><a href="/all" class="active">All</a>
+            <a href="/scan">Scan</a><a href="/audit">Audit</a><a href="/warranty">Warranty</a><a href="/trash">Trash</a>
+        </nav>
+        <button class="nav-toggle" aria-label="toggle navigation">☰</button>
+    </header>
+    <main>
+        <div class="page-header">
+            <h1>All Products</h1>
+            <div class="button-group">
+                <button id="print-stickers-btn" class="button button-secondary">🖨️ Print Stickers</button>
+                <button id="export-excel-btn" class="button">📄 Export to Excel</button>
+            </div>
+        </div>
+        <div class="content-container" id="allProductsResult">
+            <p>Loading products...</p>
+        </div>
+    </main>
+    
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/all.js"></script>
+</body>
+</html>

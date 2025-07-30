@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trash - Issac's Home Inventory</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">Issac's Home Inventory</a>
+        <nav class="main-nav">
+            <a href="/">Dashboard</a>
+            <a href="/add">Add</a>
+            <a href="/find">Find</a>
+            <a href="/all">All</a>
+            <a href="/scan">Scan</a>
+            <a href="/audit">Audit</a>
+            <a href="/warranty">Warranty</a>
+            <a href="/trash" class="active">Trash</a>
+        </nav>
+        <button class="nav-toggle" aria-label="toggle navigation">☰</button>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h1>Recently Deleted Items</h1>
+        </div>
+        <div class="content-container" id="trash-result-container">
+            <p>Loading trashed items...</p>
+        </div>
+    </main>
+    
+    <script src="/js/main.js"></script>
+    <script src="/js/trash.js"></script>
+</body>
+</html>

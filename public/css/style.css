@@ -1,0 +1,232 @@
+/* ---
+--- Issac's Home Inventory - Modern UI/UX Stylesheet ---
+--- */
+
+/* 1. FONT & ROOT VARIABLES */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --font-primary: 'Poppins', sans-serif;
+    --primary-color: #4F46E5; /* Indigo */
+    --primary-hover: #4338CA;
+    --secondary-color: #6B7280; /* Gray */
+    --background-color: #F9FAFB; /* Very light gray */
+    --surface-color: #FFFFFF;
+    --text-color: #111827; /* Darker gray */
+    --border-color: #E5E7EB;
+    --danger-color: #EF4444;
+    --danger-hover: #DC2626;
+    --success-color: #10B981;
+    --warning-color: #F59E0B;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --border-radius: 0.75rem; /* 12px */
+    --transition-speed: 0.2s;
+}
+
+/* 2. GLOBAL STYLES & ANIMATIONS */
+body {
+    font-family: var(--font-primary);
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 3. HEADER & NAVIGATION */
+header {
+    background: var(--surface-color);
+    padding: 1rem 2rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.main-nav { display: flex; gap: 0.5rem; }
+.main-nav a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    position: relative;
+    transition: all var(--transition-speed) ease;
+}
+.main-nav a:hover {
+    color: var(--primary-color);
+    background-color: var(--background-color);
+}
+.main-nav a.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+.nav-toggle { display: none; }
+
+/* 4. CARDS, CONTAINERS & DASHBOARD */
+.content-container {
+    background: var(--surface-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    max-width: 700px;
+    margin: 2rem auto;
+}
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.dashboard-card {
+    background: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+.dashboard-card h2 { margin-top: 0; color: var(--primary-color); }
+
+/* 5. FORMS & BUTTONS */
+label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+input, select, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1.25rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    box-sizing: border-box;
+    transition: all var(--transition-speed) ease;
+}
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+.button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all var(--transition-speed) ease;
+    box-shadow: var(--shadow-sm);
+}
+.button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+.button:disabled {
+    background-color: var(--secondary-color);
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: var(--shadow-sm);
+}
+.button-danger { background-color: var(--danger-color); }
+.button-danger:hover { background-color: var(--danger-hover); }
+.button-secondary { background-color: var(--secondary-color); color: white; }
+.button-secondary:hover { background-color: #555; }
+
+/* 6. RESPONSIVE & MOBILE STYLES */
+@media (max-width: 768px) {
+    main { padding: 1rem; }
+    header { padding: 1rem; }
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--surface-color);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: var(--shadow-md);
+    }
+    .main-nav.active { display: flex; }
+    .nav-toggle {
+        display: block;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    .content-container { padding: 1.5rem; margin: 1rem auto; }
+    .page-header h1 { font-size: 1.75rem; }
+    /* Responsive table to card layout */
+    table thead { display: none; }
+    table, table tbody, table tr, table td {
+        display: block;
+        width: 100%;
+    }
+    table tr {
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+    }
+    table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        white-space: normal;
+    }
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        width: calc(50% - 2rem);
+        text-align: left;
+        font-weight: 600;
+        color: var(--secondary-color);
+    }
+}
+
+/* 7. OTHER COMPONENTS */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; }
+.stat-card {
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius);
+    padding: 1rem 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+.stat-card h4 { margin: 0 0 0.5rem 0; color: var(--secondary-color); }
+.stat-card p { margin: 0; font-size: 2.5rem; font-weight: 700; color: var(--primary-color); }

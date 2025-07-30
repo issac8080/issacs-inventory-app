@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.sticker-sheet {
+    display: grid;
+    /* **UPDATED:** Changed grid to 4 columns and 8 rows */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    width: 210mm;
+    height: 297mm;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    page-break-after: always;
+}
+
+.sticker {
+    box-sizing: border-box;
+    border: 1px dashed #ccc;
+    /* **UPDATED:** Reduced padding for smaller stickers */
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.sticker .qr-code {
+    /* **UPDATED:** Reduced margin */
+    margin-bottom: 4px;
+}
+
+.sticker .product-name {
+    /* **UPDATED:** Reduced font size */
+    font-size: 9px;
+    font-weight: bold;
+    word-break: break-word;
+    line-height: 1.2;
+}
+
+.sticker .item-code {
+    font-family: 'Courier New', Courier, monospace;
+    /* **UPDATED:** Reduced font size */
+    font-size: 8px;
+    margin-top: 2px;
+}
+
+.print-controls {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    background-color: #3B82F6;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 6px;
+    text-decoration: none;
+    margin: 0.5rem;
+}
+
+.button-secondary {
+    background-color: #6B7280;
+}
+
+/* Print-specific styles */
+@media print {
+    body {
+        background-color: white;
+    }
+    .print-controls {
+        display: none;
+    }
+    .sticker-sheet {
+        box-shadow: none;
+        margin: 0;
+    }
+    .sticker {
+        border: 1px dashed #ccc;
+    }
+}

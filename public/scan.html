@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Code - Issac's Home Inventory</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .tab-nav { display: flex; border-bottom: 1px solid var(--border-color); margin-bottom: 1.5rem; }
+        .tab-nav button { background: none; border: none; padding: 1rem 1.5rem; cursor: pointer; font-size: 1rem; font-weight: 500; color: var(--secondary-color); border-bottom: 3px solid transparent; }
+        .tab-nav button.active { color: var(--primary-color); border-bottom-color: var(--primary-color); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .scanner-viewport{position:relative;width:100%;max-width:500px;margin:1rem auto;border-radius:8px;overflow:hidden}
+        #reader, #ocr-video-element{width:100%;border:4px solid #fff}
+        .scan-box{position:absolute;top:50%;left:50%;width:80%;height:30%;transform:translate(-50%,-50%);border:3px solid rgba(255,255,255,.8);box-shadow:0 0 0 4000px rgba(0,0,0,.4);border-radius:8px}
+        #scan-status{text-align:center;font-weight:500;margin-top:1rem;padding:.75rem;border-radius:6px}
+        #ocr-snapshot{max-width:100%;border:2px solid var(--border-color);border-radius:8px;margin-top:1rem}
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">Issac's Home Inventory</a>
+        <nav class="main-nav">
+            <a href="/">Dashboard</a><a href="/add">Add</a><a href="/find">Find</a><a href="/all">All</a>
+            <a href="/scan" class="active">Scan</a><a href="/audit">Audit</a><a href="/warranty">Warranty</a><a href="/trash">Trash</a>
+        </nav>
+        <button class="nav-toggle" aria-label="toggle navigation">☰</button>
+    </header>
+
+    <main>
+        <div class="page-header"><h1>Scan Product Code</h1></div>
+        <div class="content-container">
+            <div class="tab-nav">
+                <button id="qr-tab-btn" class="active">Scan QR Code</button>
+                <button id="ocr-tab-btn">Scan Handwriting</button>
+            </div>
+            <div id="qr-tab-content" class="tab-content active">
+                <p style="text-align: center;">Point your camera at a QR code for an instant scan.</p>
+                <div class="scanner-viewport"><div id="reader"></div></div>
+            </div>
+            <div id="ocr-tab-content" class="tab-content">
+                 <p style="text-align: center;">Place the handwritten code inside the box and tap capture.</p>
+                <div class="scanner-viewport">
+                    <video id="ocr-video-element" autoplay playsinline muted></video>
+                    <div class="scan-box"></div>
+                </div>
+                <button id="capture-text-btn" class="button" style="margin-top: 1rem; width: 100%;" disabled>Loading Engine...</button>
+                <div id="ocr-result-container" style="display: none; text-align: center;">
+                     <p>Analyzing captured image...</p>
+                     <canvas id="ocr-snapshot"></canvas>
+                     <button id="retry-scan-btn" class="button button-secondary" style="margin-top: 1rem; width: 100%;">Scan Again</button>
+                </div>
+            </div>
+            <div id="scan-status"></div>
+        </div>
+    </main>
+
+    <audio id="successSound" src="https://www.soundjay.com/buttons/beep-07a.mp3" preload="auto"></audio>
+    <audio id="errorSound" src="https://www.soundjay.com/buttons/beep-03.mp3" preload="auto"></audio>
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
+    <script async src="https://docs.opencv.org/4.9.0/opencv.js" onload="onOpenCvReady();"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scan.js"></script>
+</body>
+</html>

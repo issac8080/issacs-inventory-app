@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Product – Issac’s Home Inventory</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
+    .modal-content { background: #fefefe; margin: 10% auto; padding: 20px; border-radius: 8px; width: 90%; max-width: 500px; text-align: center; }
+    .modal-close { float: right; font-size: 28px; font-weight: bold; cursor: pointer; color: #aaa; }
+    #scanner-container video, #scanner-container canvas { width: 100% !important; height: auto !important; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">Issac's Home Inventory</a>
+    <nav class="main-nav">
+      <a href="/">Dashboard</a><a href="/add" class="active">Add</a>
+      <a href="/find">Find</a><a href="/all">All</a>
+      <a href="/scan">Scan</a><a href="/audit">Audit</a><a href="/warranty">Warranty</a><a href="/trash">Trash</a>
+    </nav>
+    <button class="nav-toggle" aria-label="toggle navigation">☰</button>
+  </header>
+
+  <main>
+    <section class="content-container" style="margin-bottom:2rem;">
+      <h2>Add Faster with a Barcode</h2>
+      <p>Scan a product's retail barcode (UPC/EAN) to fetch its details automatically.</p>
+      <div id="barcode-lookup-status"></div>
+      <label for="barcode-input">Enter Barcode Number</label>
+      <input type="text" id="barcode-input" placeholder="e.g., 049000050106"/>
+      <div class="button-group" style="display:flex; gap:1rem;">
+        <button id="fetch-by-barcode-btn" class="button" style="flex:1;">Fetch Details</button>
+        <button id="scan-barcode-btn" class="button button-secondary" style="flex:1;">📷 Scan Barcode</button>
+      </div>
+    </section>
+
+    <section class="content-container">
+      <form id="productForm" enctype="multipart/form-data">
+        <label for="name">Product Name</label>
+        <input type="text" id="name" name="name" required/>
+        <label for="category">Category</label>
+        <select id="category" name="category">
+          <option>Electronics</option><option>Furniture</option>
+          <option>Appliances</option><option>Tools</option>
+          <option>Groceries</option><option>Other</option>
+        </select>
+        <label for="purchaseDate">Purchase Date</label>
+        <input type="date" id="purchaseDate" name="purchaseDate"/>
+        <label for="warrantyDate">Warranty Expiry</label>
+        <input type="date" id="warrantyDate" name="warrantyDate"/>
+        <label for="invoice">Upload Invoice (Image/PDF)</label>
+        <input type="file" id="invoice" name="invoice" accept="image/*,application/pdf"/>
+        <label for="notes">Notes (Brand, Model, Serial #, etc.)</label>
+        <textarea id="notes" name="notes" rows="4"></textarea>
+        <button type="submit" class="button">Save Product to Inventory</button>
+      </form>
+      <div id="formResult" class="result-container"></div>
+    </section>
+  </main>
+
+  <div id="scanner-modal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <p id="barcode-reader-status">Starting camera...</p>
+      <div id="scanner-container" style="position: relative;"></div>
+    </div>
+  </div>
+
+  <audio id="successSound" src="https://www.soundjay.com/buttons/beep-07a.mp3" preload="auto"></audio>
+  <audio id="errorSound"   src="https://www.soundjay.com/buttons/beep-03.mp3" preload="auto"></audio>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/quagga/dist/quagga.min.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/add.js"></script>
+</body>
+</html>

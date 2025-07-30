@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Product - Issac's Home Inventory</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">Issac's Home Inventory</a>
+        <nav class="main-nav">
+            <a href="/">Dashboard</a>
+            <a href="/add">Add</a>
+            <a href="/find" class="active">Find</a>
+            <a href="/all">All</a>
+            <a href="/scan">Scan</a>
+            <a href="/audit">Audit</a>
+            <a href="/warranty">Warranty</a>
+            <a href="/trash">Trash</a>
+        </nav>
+        <button class="nav-toggle" aria-label="toggle navigation">☰</button>
+    </header>
+    <main>
+        <div class="page-header"><h1>Find a Product by Code</h1></div>
+        <div class="content-container">
+            <label for="lookupCode">Product Code</label>
+            <input type="text" id="lookupCode" placeholder="e.g., ITEM0001">
+            <button id="lookupButton" class="button">Search</button>
+            <div id="lookupResult" class="result-container"></div>
+        </div>
+    </main>
+    <audio id="successSound" src="https://www.soundjay.com/buttons/beep-07a.mp3" preload="auto"></audio>
+    <audio id="errorSound" src="https://www.soundjay.com/buttons/beep-03.mp3" preload="auto"></audio>
+    <script src="/js/main.js"></script>
+    <script src="/js/find.js"></script>
+</body>
+</html>
