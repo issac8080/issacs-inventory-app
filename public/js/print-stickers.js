@@ -39,9 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
         sticker.appendChild(itemCode);
         sheet.appendChild(sticker);
 
-        // **UPDATED:** Generate a smaller QR code to fit the new sticker size
+        // **UPDATED:** Generate a smaller QR code with the full URL
+        const productUrl = `${window.location.origin}/details.html?code=${product.product_code}`;
         new QRCode(qrCodeDiv, {
-            text: product.product_code,
+            text: productUrl,
             width: 45,
             height: 45,
             correctLevel: QRCode.CorrectLevel.M // M is more suitable for smaller QR codes
