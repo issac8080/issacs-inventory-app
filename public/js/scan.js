@@ -46,14 +46,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     captureBtn.disabled = true;
 
+    // **UPDATED:** This function now parses the scanned text
     function onScanSuccess(decodedText) {
-        // **FIX:** Added playSound directly here for immediate feedback.
         playSound('successSound');
         
         if (html5Qrcode && html5Qrcode.isScanning) {
             html5Qrcode.stop().catch(err => console.error("QR Scanner failed to stop.", err));
         }
-        handleSuccess(decodedText, "QR Code Found");
+        
+        let productCode = decodedText;
+            
+        // Check if the decoded text is a URL from our app
+        try {
+            const url = new URL(decodedText);
+            // Check if it's a details page URL and has a 'code' param
+            if (url.pathname.endsWith('/details.html') && url.searchParams.has('code')) {
+                productCode = url.searchParams.get('code');
+            }
+        } catch (e) {
+            // Not a valid URL, assume it's a plain product code (old format)
+        }
+        
+        handleSuccess(productCode, "QR Code Found");
     }
 
     function startQrScanner() {
@@ -168,7 +182,6 @@ function findProductCode(text) {
 }
 
 function handleSuccess(code, type) {
-    // playSound is already here, but the call in onScanSuccess ensures it's immediate
     playSound('successSound'); 
     statusDiv.innerHTML = `<p style="color: var(--success-color);">✅ ${type}: ${code}. Redirecting...</p>`;
     setTimeout(() => window.location.href = `/details.html?code=${code}`, 500);
