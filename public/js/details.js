@@ -34,9 +34,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
             `;
         
-        // Generate QR Code
+        // **UPDATED:** Generate QR Code with the full URL
+        const productUrl = `${window.location.origin}/details.html?code=${item.product_code}`;
         new QRCode(document.getElementById("qrcode"), {
-            text: item.product_code,
+            text: productUrl,
             width: 128,
             height: 128
         });
